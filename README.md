@@ -5,7 +5,7 @@
 ![Compliance](https://img.shields.io/badge/Governance-RBAC--SOX-blue)
 ![Real Estate Tech](https://img.shields.io/badge/Industry-Real%20Estate-orange)
 
-> **🔗 [View Live Demo](https://saurabhsrivastav-in.github.io/Gatekeeper-Auth/))**
+> **🔗 [View Live Demo](https://saurabhsrivastav-in.github.io/Gatekeeper-Auth/)**
 
 ## 📌 Executive Summary
 In global financial operations, manual access provisioning is more than an inconvenience - it is a compliance liability. **Gatekeeper Auth** is an SSO-integrated orchestration portal designed to automate complex access workflows for high-volume invoicing systems across APAC and EMEA.
