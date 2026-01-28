@@ -8,7 +8,7 @@
 > **🔗 [View Live Demo](https://saurabhsrivastav-in.github.io/Gatekeeper-Auth/))**
 
 ## 📌 Executive Summary
-In global financial operations, manual access provisioning is more than an inconvenience—it is a compliance liability. **Gatekeeper Auth** is an SSO-integrated orchestration portal designed to automate complex access workflows for high-volume invoicing systems across APAC and EMEA.
+In global financial operations, manual access provisioning is more than an inconvenience - it is a compliance liability. **Gatekeeper Auth** is an SSO-integrated orchestration portal designed to automate complex access workflows for high-volume invoicing systems across APAC and EMEA.
 
 By replacing fragmented manual approvals with a centralized, logic-driven engine, this solution reduces administrative overhead by **30-40%** while enforcing strict regional governance and financial controls.
 
