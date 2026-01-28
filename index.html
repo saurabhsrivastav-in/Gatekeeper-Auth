@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finishline Access Portal | CBRE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --cbre-green: #006A4D; --cbre-dark: #003f2e; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f8fafc; color: #1e293b; }
+        .glass-card { background: white; border: 1px solid #e2e8f0; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.05); }
+        .btn-primary { background-color: var(--cbre-green); transition: all 0.3s ease; }
+        .btn-primary:hover { background-color: var(--cbre-dark); transform: translateY(-2px); }
+        .input-field { border: 1.5px solid #cbd5e1; transition: all 0.2s; background: white; }
+        .input-field:focus { border-color: var(--cbre-green); outline: none; box-shadow: 0 0 0 4px rgba(0, 106, 77, 0.1); }
+        .hidden-section { display: none; }
+        .active-section { display: block; animation: fadeIn 0.4s ease forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="min-h-screen pb-20">
+
+    <nav class="bg-white border-b border-slate-200 px-8 py-5 mb-10">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <div class="bg-[#006A4D] px-4 py-1.5 rounded"><span class="text-white font-extrabold text-2xl tracking-tighter">CBRE</span></div>
+                <h1 class="text-xl font-bold text-slate-800">Finishline Portal</h1>
+            </div>
+            <p class="text-sm font-bold text-slate-500">saurabh.srivastav@cbre.com</p>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-6">
+        <div class="glass-card rounded-[3rem] p-8 md:p-16">
+
+            <section id="step-1" class="active-section">
+                <h2 class="text-4xl font-extrabold text-slate-900 mb-8">Access Verification</h2>
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <div class="space-y-2">
+                        <label class="text-xs font-black uppercase text-slate-400">Target Email Address *</label>
+                        <input type="email" id="main-email" oninput="checkEmail()" placeholder="colleague@cbre.com" class="input-field w-full p-4 rounded-2xl font-bold">
+                    </div>
+                    <div class="p-4 bg-slate-50 border rounded-2xl self-end h-[62px] flex items-center font-bold text-slate-500 italic">
+                        Requestor: saurabh.srivastav@cbre.com
+                    </div>
+                </div>
+
+                <div id="path-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6 opacity-20 pointer-events-none transition-all duration-500">
+                    <button onclick="navTo('user-flow')" class="p-8 rounded-[2.5rem] border hover:border-blue-500 transition-all bg-white shadow-sm hover:shadow-xl text-left group">
+                        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all"><i data-lucide="user-plus"></i></div>
+                        <h3 class="font-bold text-xl">New User Level</h3>
+                        <p class="text-xs text-slate-400 mt-2">Create profile & country visibility.</p>
+                    </button>
+                    <button onclick="navTo('team-flow')" class="p-8 rounded-[2.5rem] border hover:border-[#006A4D] transition-all bg-white shadow-sm hover:shadow-xl text-left group">
+                        <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#006A4D] group-hover:text-white transition-all"><i data-lucide="shield-check"></i></div>
+                        <h3 class="font-bold text-xl">Transaction Access</h3>
+                        <p class="text-xs text-slate-400 mt-2">Request creation/edit rights.</p>
+                    </button>
+                    <button onclick="navTo('ref-flow')" class="p-8 rounded-[2.5rem] border hover:border-purple-600 transition-all bg-white shadow-sm hover:shadow-xl text-left group">
+                        <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-purple-600 group-hover:text-white transition-all"><i data-lucide="copy"></i></div>
+                        <h3 class="font-bold text-xl">By Reference</h3>
+                        <p class="text-xs text-slate-400 mt-2">Mirror existing user access.</p>
+                    </button>
+                </div>
+            </section>
+
+            <section id="ref-flow" class="hidden-section">
+                <button onclick="navTo('step-1')" class="mb-6 flex items-center gap-2 text-slate-400 font-bold text-xs uppercase hover:text-purple-700"><i data-lucide="arrow-left" class="w-4 h-4"></i> Back</button>
+                <h2 class="text-3xl font-extrabold mb-10">Mirror Existing Access</h2>
+                
+                <div class="p-10 bg-slate-50/50 rounded-[3rem] border border-slate-200 mb-10">
+                    <div class="max-w-xl space-y-4">
+                        <label class="text-xs font-black uppercase text-slate-400">Reference User Email *</label>
+                        <input type="email" id="ref-email" placeholder="search-colleague@cbre.com" class="input-field w-full p-4 rounded-2xl font-bold">
+                        <p class="text-[11px] text-slate-400 font-medium italic">Type the email address of the colleague whose access levels you wish to mirror.</p>
+                    </div>
+                </div>
+
+                <div class="p-6 bg-purple-50 text-purple-800 border-l-4 border-purple-600 rounded-r-2xl mb-10">
+                    <p class="text-xs leading-relaxed font-bold">
+                        Note: Cloning a user's access will request the exact same Team Memberships, Admin Roles, and Regional Visibility as the reference user.
+                    </p>
+                </div>
+
+                <button onclick="submitFlow('Regional Business Leader')" class="btn-primary w-full text-white font-bold py-5 rounded-2xl shadow-xl">Proceed with Reference Profile</button>
+            </section>
+
+            <section id="user-flow" class="hidden-section">
+                <button onclick="navTo('step-1')" class="mb-6 flex items-center gap-2 text-slate-400 font-bold text-xs uppercase hover:text-blue-700"><i data-lucide="arrow-left" class="w-4 h-4"></i> Back</button>
+                <h2 class="text-3xl font-extrabold mb-10">Profile & Country Assignment</h2>
+                
+                <div class="grid md:grid-cols-2 gap-6 mb-10">
+                    <input type="text" placeholder="First Name *" class="input-field p-4 rounded-xl font-bold">
+                    <input type="text" placeholder="Last Name *" class="input-field p-4 rounded-xl font-bold">
+                    <input type="text" placeholder="Employee ID *" class="input-field p-4 rounded-xl font-bold">
+                    <input type="text" id="auto-u-email" disabled class="input-field p-4 rounded-xl bg-slate-50 text-slate-400 italic">
+                    <select id="u-region" class="md:col-span-2 input-field p-4 rounded-xl font-bold">
+                        <option value="">Select Target Country *</option>
+                        <option value="United Kingdom">United Kingdom </option>
+                        <option value="Singapore">Singapore </option>
+                        <option value="Spain">Spain </option>
+                        <option value="Sweden">Sweden </option>
+                        <option value="India">India </option>
+                        <option value="China">China </option>
+                        <option value="Korea">Korea </option>
+                        <option value="Australia">Australia </option>
+                    </select>
+                </div>
+
+                <div class="p-10 bg-slate-50/50 rounded-[3rem] border border-slate-200">
+                    <h4 class="font-bold text-slate-800 mb-8 flex items-center gap-2"><i data-lucide="eye" class="w-5 h-5 text-blue-600"></i> Desired Access Level</h4>
+                    <div class="flex flex-wrap gap-8">
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <input type="radio" name="user-access-type" onclick="toggleUserPath('readonly')" class="w-6 h-6 accent-blue-600">
+                            <span class="font-bold text-slate-600 group-hover:text-blue-600">Read Only Access</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <input type="radio" name="user-access-type" onclick="toggleUserPath('transaction')" class="w-6 h-6 accent-[#006A4D]">
+                            <span class="font-bold text-slate-600 group-hover:text-emerald-700">Transaction Creation / Edit</span>
+                        </label>
+                    </div>
+
+                    <div id="u-readonly-params" class="hidden-section mt-10 space-y-6">
+                        <div class="p-6 bg-blue-50 border-l-4 border-blue-600 rounded-r-2xl">
+                            <p class="text-sm font-bold text-blue-900 mb-2">Scope of Access:</p>
+                            <p class="text-xs text-blue-800 leading-relaxed">
+                                Granting Read-Only access allows the user to view **all transactions** raised within the selected country. Individual team assignments are not required for this level.
+                            </p>
+                            <p class="mt-4 text-xs font-black text-blue-900 uppercase tracking-wider">Requires Finance Controller Approval</p>
+                        </div>
+                        <button onclick="submitFlow('Finance Controller')" class="btn-primary w-full text-white font-bold py-5 rounded-2xl mt-6">Proceed for Controller Approval</button>
+                    </div>
+
+                    <div id="u-transaction-redirect" class="hidden-section mt-10">
+                        <div class="p-6 bg-emerald-50 text-emerald-800 border-l-4 border-emerald-600 rounded-r-2xl">
+                            <p class="font-bold mb-4 text-sm">Transactional rights are managed at the Team Level.</p>
+                            <button onclick="navTo('team-flow')" class="bg-[#006A4D] text-white px-8 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-[#003f2e] transition-colors">
+                                Go to Team & Transaction Flow <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="team-flow" class="hidden-section">
+                <button onclick="navTo('step-1')" class="mb-6 flex items-center gap-2 text-slate-400 font-bold text-xs uppercase hover:text-emerald-700"><i data-lucide="arrow-left" class="w-4 h-4"></i> Back</button>
+                <div class="mb-10">
+                    <h2 class="text-3xl font-extrabold">Transaction Creation / Edit</h2>
+                    <p class="text-slate-500 text-sm mt-1 font-medium">Define team assignments and roles for full system access.</p>
+                </div>
+                
+                <div class="flex gap-6 mb-10">
+                    <button id="btn-existing" onclick="toggleTeamPath('existing')" class="flex-1 p-6 rounded-2xl border-2 border-slate-200 font-bold text-slate-600 hover:border-emerald-600 transition-all">Join Existing Team</button>
+                    <button id="btn-new" onclick="toggleTeamPath('new')" class="flex-1 p-6 rounded-2xl border-2 border-slate-200 font-bold text-slate-600 hover:border-[#006A4D] transition-all">Create New Team(s)</button>
+                </div>
+
+                <div id="existing-team-area" class="hidden-section space-y-6">
+                    <div id="existing-rows"></div>
+                    <button onclick="addExistingRow()" class="text-emerald-600 font-bold text-sm flex items-center gap-2"><i data-lucide="plus-circle" class="w-4 h-4"></i> Add Another Team</button>
+                </div>
+
+                <div id="new-team-area" class="hidden-section space-y-8">
+                    <div id="new-team-containers"></div>
+                    <button onclick="addNewTeamContainer()" class="text-[#006A4D] font-black text-sm flex items-center gap-2 px-6 py-3 bg-emerald-50 rounded-xl border border-emerald-100"><i data-lucide="layers" class="w-5 h-5"></i> Request New Team Creation</button>
+                </div>
+
+                <button onclick="submitFlow('Regional Business Leader')" class="btn-primary w-full text-white font-bold py-5 rounded-2xl mt-12 shadow-xl">Proceed to Final Approval</button>
+            </section>
+
+            <section id="approval-screen" class="hidden-section max-w-2xl mx-auto">
+                <h2 class="text-3xl font-extrabold text-center mb-10">Compliance Verification</h2>
+                <div id="policy-box" class="p-8 rounded-3xl mb-8 font-bold border text-center text-sm leading-relaxed"></div>
+                <div class="space-y-4">
+                    <label id="approver-label" class="text-[10px] font-black uppercase text-slate-400 tracking-widest ml-2">Authorized Email</label>
+                    <input type="text" placeholder="Enter approver email..." class="input-field w-full p-5 rounded-2xl font-bold">
+                </div>
+                <button onclick="navTo('success-screen')" class="btn-primary w-full text-white font-bold py-5 rounded-2xl mt-10">Confirm & Submit Request</button>
+            </section>
+
+            <section id="success-screen" class="hidden-section text-center py-10">
+                <div class="w-20 h-20 bg-green-50 text-green-600 rounded-full flex items-center justify-center mx-auto mb-8"><i data-lucide="check" class="w-12 h-12 stroke-[3px]"></i></div>
+                <h2 class="text-4xl font-black mb-4">Request Logged</h2>
+                <p class="text-slate-500 font-medium">Your application has been successfully routed to the designated approver.</p>
+                <button onclick="location.reload()" class="mt-12 px-12 py-4 bg-slate-900 text-white font-bold rounded-full">Start New Request</button>
+            </section>
+
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        function checkEmail() {
+            const email = document.getElementById('main-email').value;
+            const grid = document.getElementById('path-grid');
+            const isValid = email.toLowerCase().endsWith('@cbre.com');
+            grid.style.opacity = isValid ? "1" : "0.2";
+            grid.style.pointerEvents = isValid ? "auto" : "none";
+            document.getElementById('auto-u-email').value = email;
+        }
+
+        function navTo(id) {
+            document.querySelectorAll('section').forEach(s => s.classList.remove('active-section'));
+            document.getElementById(id).classList.add('active-section');
+        }
+
+        function toggleUserPath(path) {
+            document.getElementById('u-readonly-params').classList.toggle('hidden-section', path !== 'readonly');
+            document.getElementById('u-transaction-redirect').classList.toggle('hidden-section', path !== 'transaction');
+        }
+
+        function toggleTeamPath(type) {
+            document.getElementById('existing-team-area').classList.toggle('hidden-section', type !== 'existing');
+            document.getElementById('new-team-area').classList.toggle('hidden-section', type !== 'new');
+            
+            document.getElementById('btn-existing').className = type === 'existing' ? 'flex-1 p-6 rounded-2xl border-2 border-emerald-600 bg-emerald-50 font-black text-emerald-700 shadow-inner' : 'flex-1 p-6 rounded-2xl border-2 border-slate-200 font-bold text-slate-600 bg-white';
+            document.getElementById('btn-new').className = type === 'new' ? 'flex-1 p-6 rounded-2xl border-2 border-[#006A4D] bg-emerald-50 font-black text-[#006A4D] shadow-inner' : 'flex-1 p-6 rounded-2xl border-2 border-slate-200 font-bold text-slate-600 bg-white';
+            
+            if(type === 'existing' && !document.getElementById('existing-rows').children.length) addExistingRow();
+            if(type === 'new' && !document.getElementById('new-team-containers').children.length) addNewTeamContainer();
+        }
+
+        function addExistingRow() {
+            const id = 'ex-' + Date.now();
+            const div = document.createElement('div');
+            div.className = "p-6 bg-white border rounded-2xl shadow-sm relative mb-4";
+            div.innerHTML = `
+                <button onclick="this.parentElement.remove()" class="absolute -top-2 -right-2 text-red-500 bg-white rounded-full border shadow p-1"><i data-lucide="x" class="w-4 h-4"></i></button>
+                <div class="grid grid-cols-2 gap-6">
+                    <input type="text" placeholder="Existing Team Name *" class="input-field p-4 rounded-xl font-bold">
+                    <select onchange="updateMsg('${id}', this.value)" class="input-field p-4 rounded-xl font-bold">
+                        <option value="">Access Level *</option>
+                        <option value="member">Team Member</option><option value="admin">Admin</option>
+                    </select>
+                </div>
+                <div id="${id}" class="mt-4 text-[11px] font-black italic hidden"></div>`;
+            document.getElementById('existing-rows').appendChild(div);
+            lucide.createIcons();
+        }
+
+        function addNewTeamContainer() {
+            const memberId = 'mem-' + Date.now();
+            const div = document.createElement('div');
+            div.className = "p-8 bg-white border-2 border-emerald-100 rounded-[2.5rem] shadow-md space-y-6 relative mb-6";
+            div.innerHTML = `
+                <button onclick="this.parentElement.remove()" class="absolute top-6 right-8 text-slate-300 hover:text-red-500"><i data-lucide="trash-2" class="w-6 h-6"></i></button>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <input type="text" placeholder="New Team Name *" class="input-field p-4 rounded-xl font-bold">
+                    <input type="text" placeholder="Country *" class="input-field p-4 rounded-xl font-bold">
+                    <input type="text" placeholder="Approver Employee ID *" class="input-field p-4 rounded-xl font-bold">
+                </div>
+                <div id="${memberId}" class="space-y-3 pt-4 border-t border-dashed"></div>
+                <button onclick="addMemberRow('${memberId}')" class="text-xs font-black text-[#006A4D] flex items-center gap-1"><i data-lucide="plus" class="w-3 h-3"></i> Add Member Row</button>`;
+            document.getElementById('new-team-containers').appendChild(div);
+            addMemberRow(memberId);
+            lucide.createIcons();
+        }
+
+        function addMemberRow(containerId) {
+            const msgId = 'msg-' + Date.now();
+            const div = document.createElement('div');
+            div.className = "grid grid-cols-1 md:grid-cols-4 gap-3 bg-slate-50 p-4 rounded-xl border border-slate-100";
+            div.innerHTML = `
+                <input type="text" placeholder="Emp ID" class="input-field p-3 rounded-lg text-xs font-bold">
+                <input type="email" placeholder="Email ID" class="input-field p-3 rounded-lg text-xs font-bold">
+                <select onchange="updateMsg('${msgId}', this.value)" class="input-field p-3 rounded-lg text-xs font-bold">
+                    <option value="">Role</option>
+                    <option value="member">Member</option><option value="admin">Admin</option>
+                </select>
+                <div id="${msgId}" class="text-[9px] font-black flex items-center italic text-slate-400">Select role...</div>`;
+            document.getElementById(containerId).appendChild(div);
+        }
+
+        function updateMsg(id, val) {
+            const box = document.getElementById(id);
+            if(!val) { box.classList.add('hidden'); return; }
+            box.classList.remove('hidden');
+            box.innerHTML = (val === 'admin') ? "<span class='text-amber-600'>Admin: Full country edit rights.</span>" : "<span class='text-blue-600'>Member: Personal entries only.</span>";
+        }
+
+        function submitFlow(approverType) {
+            const box = document.getElementById('policy-box');
+            const country = document.getElementById('u-region').value || "the selected scope";
+            document.getElementById('approver-label').innerText = "Select " + approverType + " Email Address";
+            
+            if(approverType === 'Finance Controller') {
+                box.className = "p-8 rounded-3xl mb-8 font-bold bg-blue-50 text-blue-900 border-blue-100";
+                box.innerHTML = "Access Scope: View-only visibility for all transactions in " + country + ". Policy requires regional Finance Controller sign-off.";
+            } else {
+                box.className = "p-8 rounded-3xl mb-8 font-bold bg-amber-50 text-amber-900 border-amber-100";
+                const refUser = document.getElementById('ref-email').value || "the reference user";
+                box.innerHTML = "Access Scope: Full replication of " + refUser + "'s permissions. Policy requires endorsement from a Regional Business Leader.";
+            }
+            navTo('approval-screen');
+        }
+    </script>
+</body>
+</html>
